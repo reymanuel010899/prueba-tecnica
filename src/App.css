@@ -1,0 +1,13 @@
+#root {
+
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.table-w {
+  margin-top: 50px;
+  width: 100%;
+}
+.filtros button{
+  margin: 15px;
+}
