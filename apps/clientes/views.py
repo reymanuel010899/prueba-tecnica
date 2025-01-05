@@ -1,10 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.views import APIView
 # from taskproject.tasks import  send_email_tasks
 from .models import CustomerModel
 from .serializers import CustomerSerializers
-from rest_framework.response import Response
-from rest_framework import status
 from drf_yasg.utils import swagger_auto_schema
 
 

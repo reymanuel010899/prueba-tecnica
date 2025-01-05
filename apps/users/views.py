@@ -1,7 +1,4 @@
-from datetime import datetime
 from rest_framework.response import Response
-from .serializers import UserSerializer, UserRegistroView
-from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
 from rest_framework import status
 from rest_framework.views import APIView
@@ -52,18 +49,15 @@ class LoginView(APIView):
 
 # aqui estoy serrando la secion
 class logoutView(APIView):
-
     '''This is the view to close the section, you just have to send me the user's token by parameters'''
 
     def post(self, request, *args, **kwargs):
         serializer =  LogoutSerializer(data=request.data) 
 
         try:
-
             if serializer.is_valid():
                 token_id = serializer.validated_data['token_id']
                 token_instans = Token.objects.filter(key=token_id).first()
-                print("+++++++++++++++++++++++", token_id)
                 if token_instans:
                     token_instans.delete()
                     return Response({'messege':'secion serrada exitosa'}, status=status.HTTP_200_OK)

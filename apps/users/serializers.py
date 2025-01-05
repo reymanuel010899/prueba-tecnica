@@ -2,39 +2,6 @@ from .models import User
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 
-class UserSerializer(serializers.ModelField):
-    class Meta:
-        model = User
-        field = (
-            'username',
-            'gmail',
-            'nombre',
-        )
-
-class LogoutSerializer(serializers.Serializer):
-    token_id = serializers.CharField()
-    
-class UserRegistroView(serializers.Serializer):
-    password = serializers.CharField()
-    repect_password  =  serializers.CharField()
-    username = serializers.CharField()
-    gmail = serializers.EmailField()
-    nombre = serializers.CharField()
-
-
-
-class serializer_update(serializers.Serializer):
-    username = serializers.CharField()
-    gmail = serializers.CharField()
-    password = serializers.CharField()
-    password2 = serializers.CharField()
-    
-
-    def validate(self, data):
-        if data['password'] != data['password2']:
-            raise serializers.ValidationError('las contraseñas no son iguales')
-        return data
-    
 
 class LoginZerializer(serializers.Serializer):
     username = serializers.CharField()
@@ -61,3 +28,7 @@ class LoginZerializer(serializers.Serializer):
 
         attrs['user'] = user
         return attrs
+    
+class LogoutSerializer(serializers.Serializer):
+    token_id = serializers.CharField()
+    

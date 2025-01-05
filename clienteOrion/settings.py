@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
-
+from dotenv import load_dotenv
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n-s(!+$pdi#0(1k8)_wjd!^qxlfj04-b#=ndg*a+8kuzudfhsd'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,7 +50,6 @@ TRHE_PARTY_APPS = [
 PROJECT_APPS = [
     'apps.users',
     'apps.clientes'
-
 ]
 
 INSTALLED_APPS  = DJANGO_APPS + TRHE_PARTY_APPS + PROJECT_APPS
@@ -96,6 +96,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('ENGINE'),
+#         'NAME': os.getenv('NAME'),
+#         'USER':  os.getenv('USUARIO'),  # Reemplaza con tu usuario de la base de datos
+#         'PASSWORD': os.getenv('PASSWORD'),  # Reemplaza con la contraseña de tu base de datos
+#         'HOST': os.getenv('HOST'),  # Punto de enlace de tu RDS
+#         'PORT': os.getenv('PORT'),  # Puerto de PostgreSQL
+#     }
+# }
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',

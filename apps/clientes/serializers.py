@@ -23,7 +23,6 @@ class CustomerSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = CustomerModel
-        # fields = '__all__'
         fields = [
             'id',
             'birth_date',
