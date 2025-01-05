@@ -9,7 +9,7 @@ import CerrerSeccion from '../component/Logout';
 import { user } from '../typados/login';
 
 type customProps  = {
-  // user: user,
+  user: any,
   customers: Array<customer>,
   get_customers: ()=>{}
 }
@@ -29,10 +29,10 @@ const Home = ({user, customers, get_customers}: customProps) => {
     <>
     <div className='contenedor__menu'>
         {
-          user?.username ? <h2 className="welcome">Hola, {user?.username}</h2> : <h2>Invitado</h2>
+          user?.username ? <h2 className="welcome">Customer List</h2> : <h2>Invitado</h2>
         }
     <CerrerSeccion />  
-    <h3 className='title'>custumer list </h3>
+    { user?.username ? <h2 className='title'>{user?.username}</h2> : <h2>Invitado</h2>}
     </div>
     <div className='contenedor__home'>
       <div className='contenedor__home-child'>

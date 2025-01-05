@@ -13,7 +13,7 @@ const Navar  = ({user}: NavarProps) => {
         <>
 
             {
-                user?.username ? <span className="welcome">Hola, {user.username}</span> : <span>Invitado</span>
+                user?.username ? <span className="welcome">Hello, {user.username}</span> : <span>Invitado</span>
             }
         <nav className="navar">  
             
